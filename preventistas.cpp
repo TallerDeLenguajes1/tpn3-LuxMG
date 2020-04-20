@@ -49,14 +49,13 @@ int main(){
 
 void cargarClientes(Cliente *pVenta, int n){
 	Cliente clienteAct;
-	int i, j;
-	char nombre[15];
+	int i;
 	
 	for(i = 0; i < n; i++){
 		clienteAct.clienteID = i+1;
 		fflush(stdin);
 		printf("\nCliente %d:\nIngrese el nombre del cliente: ",i+1); gets(clienteAct.nombreCliente);
-		clienteAct.cantidadProductosAPedir = rand()%5 +1;
+		clienteAct.cantidadProductosAPedir = rand()%10 +1;
 		
 		Producto *productosComprados = (Producto *) malloc(clienteAct.cantidadProductosAPedir*sizeof(Producto));
 		cargarProductos(clienteAct.cantidadProductosAPedir, productosComprados);
@@ -94,7 +93,7 @@ void mostrarTodo(Cliente *pVenta, int n){
 		act = *pVenta;
 		printf("\nCliente #%d:",act.clienteID);
 		printf("\nNombre: %s",act.nombreCliente);
-		printf("\n\nProductos pedidos:");
+		printf("\n\nProductos pedidos: %d",act.cantidadProductosAPedir);
 		total = 0;
 		
 		for(i = 0; i < act.cantidadProductosAPedir; i++){
